@@ -19,7 +19,7 @@ class OtherDataFactory extends Factory
         $client_id = $this->faker->unique()->numberBetween(1, 50);
         $client_cxc = $this->faker->numberBetween(1, 50);
         if($client_id == $client_cxc){
-            if($client_cxc < 50){
+            if($client_cxc < 49){
                 $client_cxc++;
             }else{
                 $client_cxc--;

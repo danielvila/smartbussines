@@ -13,14 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('other_data', function (Blueprint $table) {
+        Schema::create('financial_data', function (Blueprint $table) {
             $table->id();
             $table->string('client_id')->unique();
-            $table->string('zone');
-            $table->string('user_id');
-            $table->string('client_cxc')->nullable();
-            $table->string('type_client');
-            $table->string('type_price');
+            $table->boolean('credito', false)->nullable();
+            $table->string('credito_limite', 0)->nullable();
+            $table->string('credito_dias', 0)->nullable();
+            $table->boolean('tolerancia', false)->nullable();
+            $table->string('tolerancia_dias', 0)->nullable();
+            $table->boolean('interes_mora', false)->nullable();
+            $table->string('descuento', 0)->nullable();
             $table->softDeletes();
             $table->timestamps();
         });
@@ -33,6 +35,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('other_data');
+        Schema::dropIfExists('financial_data');
     }
 };
