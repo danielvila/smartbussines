@@ -15,7 +15,7 @@ class SellerController extends Controller
      */
     public function index()
     {
-        return User::whereNotIn('id', [1])->get();
+        return User::role('Seller')->get();
     }
 
     /**

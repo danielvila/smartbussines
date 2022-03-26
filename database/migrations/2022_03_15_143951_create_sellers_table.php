@@ -15,7 +15,12 @@ return new class extends Migration
     {
         Schema::create('sellers', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('codigo');
+            $table->string('id_fiscal');
+            $table->string('direcction')->nullable();
+            $table->string('telefono')->nullable();
+            $table->string('celular')->nullable();
+            $table->boolean('activo', false);;
             $table->softDeletes();
             $table->timestamps();
         });

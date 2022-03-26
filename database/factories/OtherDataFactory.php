@@ -27,7 +27,7 @@ class OtherDataFactory extends Factory
         }
         return [
             'client_id' => $client_id,
-            'zone' => $this->faker->numberBetween(1, 99),
+            'zone_id' => $this->faker->numberBetween(1, 99),
             'user_id' => $this->faker->numberBetween(2, 11),
             'client_cxc' => $client_cxc,
             'type_client' => $this->faker->numberBetween(1, 3),

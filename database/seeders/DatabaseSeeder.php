@@ -7,6 +7,8 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
+use App\Models\User;
+
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -16,9 +18,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        $this->call(RoleSeeder::class);
         \App\Models\Client::factory(50)->create();       
         \App\Models\Zone::factory(99)->create();
-        DB::table('users')->insert([
+        User::create([
             'name' => 'daniel',
             'email' => 'daniel@test.com',
             'email_verified_at' => now(),
@@ -26,7 +29,7 @@ class DatabaseSeeder extends Seeder
             'remember_token' => Str::random(10),
             'created_at' => now(),
             'updated_at' => now(),
-        ]);
+        ])->assignRole('Admin');
         DB::table('personal_access_tokens')->insert([
             'tokenable_type' => 'App\Models\User',
             'tokenable_id' => '1',
@@ -37,7 +40,12 @@ class DatabaseSeeder extends Seeder
             'created_at' => now(),
             'updated_at' => now(),
         ]);
-        \App\Models\User::factory(10)->create();
+        
+        User::factory(10)->create();
+        for ($i=2; $i <12 ; $i++) { 
+            $user = User::find($i);
+            $user->assignRole('Seller');
+        }
         \App\Models\OtherData::factory(50)->create();
         \App\Models\FinancialData::factory(1)->create();
     }
