@@ -16,9 +16,8 @@ class FinancialDataFactory extends Factory
      */
     public function definition()
     {
-        $client_id = $this->faker->numberBetween(1, 50);
         return [
-            'client_id' => $client_id,
+            'client_id' => 1,
             'credito' => true,
             'credito_limite' => $this->faker->numberBetween(500, 999),
             'credito_dias' => $this->faker->numberBetween(0, 30),

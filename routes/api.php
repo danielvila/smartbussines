@@ -4,6 +4,8 @@ use App\Http\Controllers\ClientController;
 use App\Http\Controllers\FinancialDataController;
 use App\Http\Controllers\OtherDataController;
 use App\Http\Controllers\SellerController;
+use App\Http\Controllers\SupplierController;
+use App\Http\Controllers\SupplierFinancialController;
 use App\Http\Controllers\ZoneController;
 
 use Illuminate\Http\Request;
@@ -32,4 +34,7 @@ Route::group(['middleware' => ['cors']], function () {
     Route::get('show_client/{id}', [OtherDataController::class, 'show_client']);
     Route::apiResource('sellers', SellerController::class);
     Route::apiResource('zones', ZoneController::class);
+    Route::apiResource('suppliers', SupplierController::class);
+    Route::apiResource('suppliers_financial', SupplierFinancialController::class);
+    Route::get('supplier_show_financial/{id}', [SupplierFinancialController::class, 'show_client']);
 });

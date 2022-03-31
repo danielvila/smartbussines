@@ -35,9 +35,9 @@ class SellerController extends Controller
      * @param  \App\Models\Seller  $seller
      * @return \Illuminate\Http\Response
      */
-    public function show(Seller $seller)
+    public function show(User $seller)
     {
-        //
+        return $seller;
     }
 
     /**
@@ -47,7 +47,7 @@ class SellerController extends Controller
      * @param  \App\Models\Seller  $seller
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Seller $seller)
+    public function update(Request $request, User $seller)
     {
         //
     }
@@ -58,7 +58,7 @@ class SellerController extends Controller
      * @param  \App\Models\Seller  $seller
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Seller $seller)
+    public function destroy(User $seller)
     {
         //
     }

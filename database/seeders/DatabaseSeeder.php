@@ -48,5 +48,7 @@ class DatabaseSeeder extends Seeder
         }
         \App\Models\OtherData::factory(50)->create();
         \App\Models\FinancialData::factory(1)->create();
+        \App\Models\Supplier::factory(50)->create();
+        \App\Models\SupplierFinancial::factory(1)->create();
     }
 }
