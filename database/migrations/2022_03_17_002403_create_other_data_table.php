@@ -18,8 +18,8 @@ return new class extends Migration
             $table->string('client_cxc')->nullable();
             $table->string('type_client');
             $table->string('type_price');            
-            $table->unsignedBigInteger('client_id');
-            $table->foreign('client_id')->references('id')->on('clients');
+            $table->unsignedBigInteger('client_id')->unique();
+            $table->foreign('client_id')->references('id')->on('clients')->onDelete('cascade')->onUpdate('cascade');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->unsignedBigInteger('zone_id');

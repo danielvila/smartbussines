@@ -11,22 +11,13 @@ class Client extends Model
     use HasFactory;
     use SoftDeletes;
 
-    protected $fillable = [
-        'codigo',
-        'tipo',
-        'descripcion',
-        'id_fiscal',
-        'dv',        
-        'representante',
-        'direcction1',
-        'direcction2',
-        'pais',
-        'estado',
-        'ciudad',
-        'municipio',
-        'telefono',
-        'celular',
-        'activo',
-        'email',
-    ];
+    protected $guarded = ['created_at', 'updated_at'];
+
+    public function financialdata(){
+        return $this->hasOne('App\Models\FinancialData');
+    }
+
+    public function otherdata(){
+        return $this->hasOne('App\Models\OtherData');
+    }
 }

@@ -12,4 +12,8 @@ class OtherData extends Model
     use SoftDeletes;
 
     protected $guarded = ['created_at', 'updated_at'];
+
+    public function client(){
+        return $this->belongsTo('App\Models\Client');
+    }
 }
