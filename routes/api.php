@@ -29,9 +29,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::group(['middleware' => ['cors']], function () {
     Route::apiResource('clients', ClientController::class);
     Route::apiResource('financial_data', FinancialDataController::class);
-    Route::get('show_financial_client/{id}', [FinancialDataController::class, 'show_client']);
+    //Route::get('show_financial_client/{id}', [FinancialDataController::class, 'show_client']);
     Route::apiResource('other_data', OtherDataController::class);
-    Route::get('show_client/{id}', [OtherDataController::class, 'show_client']);
+    //Route::get('show_client/{id}', [OtherDataController::class, 'show_client']);
     Route::apiResource('sellers', SellerController::class);
     Route::apiResource('zones', ZoneController::class);
     Route::apiResource('suppliers', SupplierController::class);
