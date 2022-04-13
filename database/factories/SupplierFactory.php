@@ -17,7 +17,7 @@ class SupplierFactory extends Factory
     public function definition()
     {
         return [
-            'codigo' => $this->faker->postcode(),
+            'codigo' => $this->faker->unique()->postcode(),
             'tipo' => $this->faker->randomElement([1, 2]),
             'name' => $this->faker->company(),
             'ruc' => $this->faker->unique()->uuid(),

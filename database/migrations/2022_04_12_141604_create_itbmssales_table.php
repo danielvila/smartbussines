@@ -13,14 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('sellers', function (Blueprint $table) {
+        Schema::create('itbmssales', function (Blueprint $table) {
             $table->id();
-            $table->string('codigo')->unique();
-            $table->string('id_fiscal');
-            $table->string('direcction')->nullable();
-            $table->string('telefono')->nullable();
-            $table->string('celular')->nullable();
-            $table->boolean('activo', false);;
+            $table->string('name');
+            $table->double('itbms', 4, 2);
             $table->softDeletes();
             $table->timestamps();
         });
@@ -33,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sellers');
+        Schema::dropIfExists('itbmssales');
     }
 };

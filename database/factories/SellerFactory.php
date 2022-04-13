@@ -17,7 +17,7 @@ class SellerFactory extends Factory
     public function definition()
     {
         return [
-            'codigo' => $this->faker->postcode(),
+            'codigo' => $this->faker->unique()->postcode(),
             'descripcion' => $this->faker->company(),
             'id_fiscal' => $this->faker->unique()->uuid(),
             'direcction' => $this->faker->address(),

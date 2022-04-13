@@ -18,7 +18,7 @@ class ClientFactory extends Factory
     public function definition()
     {
         return [
-            'codigo' => $this->faker->postcode(),
+            'codigo' => $this->faker->unique()->postcode(),
             'tipo' => $this->faker->randomElement([1, 2]),
             'descripcion' => $this->faker->company(),
             'id_fiscal' => $this->faker->unique()->uuid(),
