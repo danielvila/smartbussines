@@ -30,5 +30,9 @@ class DatabaseSeeder extends Seeder
         \App\Models\Itbmsbuy::factory(1)->create();
         \App\Models\Itbmssale::factory(1)->create();
         \App\Models\Product::factory(100)->create();
+        \App\Models\Shelf::factory(5)->create();
+        \App\Models\Storage::factory(5)->create();
+        \App\Models\Stock::factory(300)->create();
+        \App\Models\Price::factory(15)->create();
     }
 }

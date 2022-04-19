@@ -30,6 +30,9 @@ return new class extends Migration
             $table->boolean('use_scale', false)->nullable();
             $table->boolean('active', false)->nullable();
             $table->boolean('ecommerce', false)->nullable();
+            $table->decimal('cost_current', $precision = 8, $scale = 4);
+            $table->decimal('cost_average', $precision = 8, $scale = 4);
+            $table->decimal('cost_previous', $precision = 8, $scale = 4);
             $table->unsignedBigInteger('department_id');
             $table->foreign('department_id')->references('id')->on('departments');
             $table->unsignedBigInteger('group_id');

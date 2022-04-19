@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Product;
+use App\Models\Stock;
 use Illuminate\Http\Request;
 
-class ProductController extends Controller
+class StockController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return Product::where('active', 1)->get();
+        return Stock::with(['storage', 'shelf'])->get();
     }
 
     /**
@@ -25,10 +25,10 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $product = Product::create($request->all());
+        $stock = Stock::create($request->all());
         return response()->json([
             'res' => true,
-            'data' => $product,
+            'stock' => $stock,
             'message' => 'Registro creado correctamente.'
         ], 200);
     }
@@ -36,15 +36,15 @@ class ProductController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Product  $product
+     * @param  \App\Models\Stock  $stock
      * @return \Illuminate\Http\Response
      */
-    public function show(Product $product)
+    public function show(Stock $stock)
     {
-        $product = Product::with(['alternatecodes', 'prices', 'stocks'])->find($product->id);
+        $stock = Stock::with(['stock', 'storage'])->find($stock->id);
         return response()->json([
             'res' => true,
-            'product' => $product,
+            'stock' => $stock,
         ], 200);
     }
 
@@ -52,15 +52,15 @@ class ProductController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Product  $product
+     * @param  \App\Models\Stock  $stock
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(Request $request, Stock $stock)
     {
-        $product->update($request->all());
+        $stock->update($request->all());
         return response()->json([
             'res' => true,
-            'data' => $product,
+            'data' => $stock,
             'message' => 'Registro actualizado correctamente.'
         ], 200);
     }
@@ -68,12 +68,12 @@ class ProductController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Product  $product
+     * @param  \App\Models\Stock  $stock
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Product $product)
+    public function destroy(Stock $stock)
     {
-        $product->delete();
+        $stock->delete();
         return response()->json([
             'res' => true,
             'message' => 'Registro eliminado correctamente.'

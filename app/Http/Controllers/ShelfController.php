@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Product;
+use App\Models\Shelf;
 use Illuminate\Http\Request;
 
-class ProductController extends Controller
+class ShelfController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,21 +14,21 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return Product::where('active', 1)->get();
+        return Shelf::all();
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created resource in shelf.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        $product = Product::create($request->all());
+        $shelf = Shelf::create($request->all());
         return response()->json([
             'res' => true,
-            'data' => $product,
+            'shelf' => $shelf,
             'message' => 'Registro creado correctamente.'
         ], 200);
     }
@@ -36,44 +36,44 @@ class ProductController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Product  $product
+     * @param  \App\Models\Shelf  $shelf
      * @return \Illuminate\Http\Response
      */
-    public function show(Product $product)
+    public function show(Shelf $shelf)
     {
-        $product = Product::with(['alternatecodes', 'prices', 'stocks'])->find($product->id);
+        $shelf = Shelf::find($shelf->id);
         return response()->json([
             'res' => true,
-            'product' => $product,
+            'shelf' => $shelf,
         ], 200);
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update the specified resource in shelf.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Product  $product
+     * @param  \App\Models\Shelf  $shelf
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(Request $request, Shelf $shelf)
     {
-        $product->update($request->all());
+        $shelf->update($request->all());
         return response()->json([
             'res' => true,
-            'data' => $product,
+            'shelf' => $shelf,
             'message' => 'Registro actualizado correctamente.'
         ], 200);
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove the specified resource from shelf.
      *
-     * @param  \App\Models\Product  $product
+     * @param  \App\Models\Shelf  $shelf
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Product $product)
+    public function destroy(Shelf $shelf)
     {
-        $product->delete();
+        $shelf->delete();
         return response()->json([
             'res' => true,
             'message' => 'Registro eliminado correctamente.'

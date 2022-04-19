@@ -25,13 +25,6 @@ class Product extends Model
         return $this->belongsTo('App\Models\Group');
     }
 
-    public function line(){
-        return $this->belongsTo('App\Models\Line');
-    }
-
-    public function trademark(){
-        return $this->belongsTo('App\Models\Trademark');
-    }
 
     public function itbmsbuy(){
         return $this->belongsTo('App\Models\Itbmsbuy');
@@ -40,4 +33,21 @@ class Product extends Model
     public function itbmssale(){
         return $this->belongsTo('App\Models\Itbmssale');
     }
+
+    public function line(){
+        return $this->belongsTo('App\Models\Line');
+    }
+
+    public function prices(){
+        return $this->hasMany('App\Models\Price');
+    }
+
+    public function stocks(){
+        return $this->hasMany('App\Models\Stock');
+    }
+
+    public function trademark(){
+        return $this->belongsTo('App\Models\Trademark');
+    }
+
 }
